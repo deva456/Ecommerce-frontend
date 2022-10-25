@@ -1,0 +1,65 @@
+.registerImage{
+    border-radius: 30%;
+    padding-top: 3em;
+    width: 90%;
+    padding-left: 2em;
+}
+
+.account-form-wrapper {
+    padding: 1em 0;
+  }
+  
+  .account-form {
+    padding: 40px 40px;
+    background-image: linear-gradient(135deg, #d8c9a365 10%, #9b9595c9 100%);
+    border-radius: 2em;
+    max-width: 500px;
+    background-repeat: no-repeat;
+
+  }
+  
+  .account-form textarea {
+    resize: none;
+  }
+  
+  .account-form .form-input,
+  .form-text-area {
+    border-radius: 4em;
+    height: 50px;
+    padding-left: 16px;
+  }
+
+           
+           
+           
+          
+           
+  .btn-grad {
+    background-image: linear-gradient(to right, #9b96759c 0%, #dbc37e  51%, #9d9b96  100%);
+ 
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px rgba(238, 238, 238, 0.564);
+    border-radius: 10px;
+    
+  }
+
+  .btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+ 
+  .login{
+    background-image: url('/assets/Images/registershop.jpeg');
+    background-position: 89rem;
+    background-size: 155em;
+    height: 37em;
+  }
+ 
+ 
+ 

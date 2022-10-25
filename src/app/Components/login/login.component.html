@@ -1,0 +1,47 @@
+<div class="login w-100 overflow-hidden">
+    <div class="row pt-5 ">
+        
+        <div class="col-6 text-center  w-50 " style="padding-top: 1em; border-radius: 5%;">
+           
+            <div class="account-form-wrapper d-flex justify-content-center  ">
+                <form class="account-form shadow animate__animated animate__headShake" autocomplete="off"
+                    [formGroup]="formModel" (ngSubmit)="SaveData()">
+                    <h5 class="title text-black-50">Login To Shop more!</h5>
+
+
+                    <div class="form-group">
+                        <label>UserName</label>
+                      <input  id="UserName" type="text" name="UserName" class="form-control  border-white mb-3 form-input" placeholder="Enter your UserName" formControlName="UserName">
+                      <div class="text-danger"
+                      *ngIf="!formModel.controls.UserName?.valid && (formModel.controls.UserName?.dirty
+                      ||formModel.controls.UserName?.touched)">
+                      UserName is not valid
+                      </div>
+                      </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input id="Password" type="Password" name="Password"
+                            class="form-control  border-white mb-3 form-input" placeholder="Enter your Password"
+                            formControlName="Password">
+                        <div class="text-danger" *ngIf="!formModel.controls.Password?.valid && (formModel.controls.Password?.dirty
+              ||formModel.controls.Password?.touched)">
+                            Password is not valid
+                        </div>
+                    </div>
+                    <div>
+                        New User <span><a routerLink="/register" class="text-decoration-none text-light">register here</a></span>
+                    </div>
+                    <div class="text-center pt-2">
+                        <button class="btn-grad"  type="submit" [disabled]="!formModel.valid">
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

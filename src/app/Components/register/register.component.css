@@ -1,0 +1,44 @@
+.registerImage{
+    border-radius: 10%;
+    padding-top: 3em;
+    width: 90%;
+    padding-left: 1em;
+}
+
+.account-form-wrapper {
+    padding: 2em 0;
+  }
+  
+  .account-form {
+    padding: 10px 70px;
+    background-image: linear-gradient(135deg, #d8c9a365 10%, #9b9595c9 100%);
+    border-radius: 4rem;
+    max-width: 400px;
+    background-repeat: no-repeat;
+  }
+  
+  .account-form textarea {
+    resize: none;
+  }
+  
+  .account-form .form-input,
+  .form-text-area {
+    background-color: #e4e4e4;
+    height: 50px;
+    padding-left: 16px;
+    border-radius: 10rem;
+  }
+
+  .animate__animated.animate__flash {
+    --animate-duration: 5s;
+    --animate-delay: 0.9s;
+  }
+
+ .register{
+    background-image: url('/assets/Images/registershop.jpeg');
+    background-position: 99rem;
+    background-size: 155em;
+  }
+  .form-input{
+    
+  }

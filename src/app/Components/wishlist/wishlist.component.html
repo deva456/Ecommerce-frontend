@@ -1,0 +1,50 @@
+<div *ngIf="wishlistArray.length !=0 " class="text-center" style="font-family:'Times New Roman', Times, serif">
+  <h4 style="color:rgb(59, 57, 51);"> Pack these <span class="text-danger">Wishlisted</span> products and enjoy your Diwali.</h4>
+</div>
+<div class="checkout_products" *ngIf="wishlistArray.length !=0 "><div class="products" ><!-- checking condition-->
+  
+    <div class="product" *ngFor="let w of wishlistArray "  ><!-- running for loop-->
+      <mat-card *ngIf="w.addedToWishList" class="mb-5 shadow" ><!-- checking condition if item added to wishlist or not-->
+        <a class="text-decoration-none" routerLink="/productInfo/{{w.productId}}" >
+        <img src="{{w.productImage}}" class="product-img " />
+       </a>
+        <p><strong>{{w.productBrand}}</strong></p>
+        <p>{{w.productName}}</p>
+        <p class="money"> <strong>{{w.productPrice | currency:'INR'}}</strong></p>
+  
+      <div *ngIf="!w.addedtocart">
+        <div >
+       <button class="w-25 btn btn-outline-success"style="margin-right:1em;" (click)="addToCart(w);removeWislistCartItem(w);updateBool(w)"><i class="fa-solid fa-cart-plus"></i></button>
+       <button class="w-25 btn btn-outline-danger" (click)="removeWislistCartItem(w);updateBool(w)"><i class="fa-solid fa-trash"></i></button>
+      </div>
+  </div>
+       <div *ngIf="w.addedtocart" >
+        <button class="Add-to-cart1" ><i class="fa-solid fa-circle-check" id="check"></i><strong> Product Added</strong></button>
+       </div>
+      </mat-card>
+    </div>
+  </div>
+  </div>
+ 
+  <div class="checkout_empty container shadow text-center" style="padding: 13em;" *ngIf="wishlistArray.length == 0">
+    <h2>Your shopping basket is empty</h2>
+    <p>Oops! You have no items in your wishlist</p>
+    <button class="btn btn-outline-warning" routerLink="/">shop now</button>
+  </div>
+  <ngx-skeleton-loader count="1" appearance="line" [theme]="{ 
+    'border-radius': '5px',
+    height: '350px',
+    width:'250px',
+    'margin-right':'5em',
+    border: '1px solid white'
+  }" *ngIf="loader"></ngx-skeleton-loader>
+  <ngx-skeleton-loader count="7" appearance="line" [theme]="{ 
+    'border-radius': '5px',
+   
+    width:'50%',
+ 
+    border: '1px solid white'
+  }" *ngIf="loader"></ngx-skeleton-loader>
+  
+  
+  

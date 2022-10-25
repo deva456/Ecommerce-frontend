@@ -1,0 +1,211 @@
+<div class="register overflow-hidden">
+   
+    <div class="row ">
+      <div class="col-6 ">
+       
+        <div class="account-form-wrapper d-flex justify-content-center  ">
+            <form class="account-form text-center shadow animate__animated animate__fadeInDownBig" autocomplete="off" [formGroup]="formModel" (ngSubmit)="SaveData()" >
+              
+              
+              <div class="form-group ">
+                <label >First Name</label><span class="text-danger">*</span>
+              <input  id="firstName" type="text" name="firstName" class="form-control  border-white mb-3 form-input" placeholder="Enter your firstName" formControlName="firstName">
+              <div class="text-danger"
+              *ngIf="!formModel.controls.firstName?.valid && (formModel.controls.firstName?.dirty
+              ||formModel.controls.firstName?.touched)">
+              First Name is not valid
+            </div>
+            </div>
+          
+            <div class="form-group">
+              <label>Last Name</label><span class="text-danger">*</span>
+            <input  id="lastName" type="text" name="lastName" class="form-control  border-white mb-3 form-input" placeholder="Enter your lastName" formControlName="lastName">
+            <div class="text-danger"
+            *ngIf="!formModel.controls.lastName?.valid && (formModel.controls.lastName?.dirty
+            ||formModel.controls.lastName?.touched)">
+            Last Name is not valid
+          </div>
+          </div>
+          
+          <div class="form-group">
+            <label>UserName</label><span class="text-danger">*</span>
+          <input  id="UserName" type="text" name="UserName" class="form-control  border-white mb-3 form-input" placeholder="Enter your UserName" formControlName="UserName">
+          <div class="text-danger"
+          *ngIf="!formModel.controls.UserName?.valid && (formModel.controls.UserName?.dirty
+          ||formModel.controls.UserName?.touched)">
+          UserName is not valid
+          </div>
+          </div>
+          
+              <div class="form-group">
+                <label>Email</label><span class="text-danger">*</span>
+              <input  id="Email" type="text" name="Email" class="form-control  border-white mb-3 form-input" placeholder="Enter your Email-id" formControlName="Email">
+              <div class="text-danger"
+              *ngIf="!formModel.controls.Email?.valid && (formModel.controls.Email?.dirty
+              ||formModel.controls.Email?.touched)">
+              Email-id is not valid
+            </div>
+            </div>
+          
+           
+              <div class="form-group">
+                <label>PhoneNumber</label><span class="text-danger">*</span>
+              <input  id="PhoneNumber" type="text" name="PhoneNumber" class="form-control  border-white mb-3 form-input" placeholder="Enter your PhoneNumber" formControlName="PhoneNumber">
+              <div class="text-danger"
+              *ngIf="!formModel.controls.PhoneNumber?.valid && (formModel.controls.PhoneNumber?.dirty
+              ||formModel.controls.PhoneNumber?.touched)">
+              PhoneNumber is not valid
+            </div>
+            </div>
+          
+              <div class="form-group">
+                <label>D.O.B</label><span class="text-danger">*</span>
+              <input  id="dob" type="date" name="dob" class="form-control  border-white mb-3 form-input" placeholder="Enter your Date Of Birth" formControlName="dob">
+              <div class="text-danger"
+              *ngIf="!formModel.controls.dob?.valid && (formModel.controls.dob?.dirty
+              ||formModel.controls.dob?.touched)">
+              Date Of Birth is not valid
+            </div>
+            </div>
+          
+            <div class="form-group">
+              <label>Address</label>
+            <textarea  id="address" type="text" name="address" class="form-control  border-white mb-3 form-input" placeholder="Enter your address" formControlName="address">
+            </textarea>
+            <div class="text-danger"
+            *ngIf="!formModel.controls.address?.valid && (formModel.controls.address?.dirty
+            ||formModel.controls.address?.touched)">
+            Address is not valid
+          </div>
+          </div>
+          
+              <div class="form-group">
+                  <label>Password</label><span class="text-danger">*</span>
+                <input  id="Password" type="Password" name="Password" class="form-control  border-white mb-3 form-input"  placeholder="create your Password" formControlName="Password">
+                <div class="text-danger"
+                *ngIf="!formModel.controls.Password?.valid && (formModel.controls.Password?.dirty
+                ||formModel.controls.Password?.touched)">
+                Password is not valid
+              </div>
+              </div>
+              <div>
+                Already a user? <span><a routerLink="/login" class="text-decoration-none text-light">click here.</a></span>
+              </div>
+              <div class="text-center pt-2">
+                <button
+                  class="btn btn-success"
+                 type="submit"
+                 [disabled]="!formModel.valid"
+                >
+                  Proceed to Register
+                </button>
+              </div>
+            </form>
+          </div>
+      </div>
+      <div class="col-6 text-center pt-5">
+        <h2 class="title text-black-50 animate__animated animate__flash" >Welcome to DK-Shop!</h2>
+        <h5 class="text-secondary pt-3">One of the leading online shopping store in India.</h5>
+        
+      </div>
+    </div>
+  </div> 
+  
+  
+  
+  <!-- ---------------------------------------------- -->
+  <!-- <div class="account-form-wrapper d-flex justify-content-center">
+    <form class="account-form" autocomplete="off" [formGroup]="formModel" (ngSubmit)="SaveData()">
+      <h5 class="title">Account Details</h5>
+      
+      <div class="form-group">
+        <label>First Name</label>
+      <input  id="firstName" type="text" name="firstName" class="form-control rounded border-white mb-3 form-input" placeholder="Balance" formControlName="firstName">
+      <div class="text-danger"
+      *ngIf="!formModel.controls.firstName?.valid && (formModel.controls.firstName?.dirty
+      ||formModel.controls.firstName?.touched)">
+      First Name is not valid
+    </div>
+    </div>
+  
+    <div class="form-group">
+      <label>Last Name</label>
+    <input  id="lastName" type="text" name="lastName" class="form-control rounded border-white mb-3 form-input" placeholder="Balance" formControlName="lastName">
+    <div class="text-danger"
+    *ngIf="!formModel.controls.lastName?.valid && (formModel.controls.lastName?.dirty
+    ||formModel.controls.lastName?.touched)">
+    Last Name is not valid
+  </div>
+  </div>
+  
+  <div class="form-group">
+    <label>UserName</label>
+  <input  id="UserName" type="text" name="UserName" class="form-control rounded border-white mb-3 form-input" placeholder="Balance" formControlName="UserName">
+  <div class="text-danger"
+  *ngIf="!formModel.controls.UserName?.valid && (formModel.controls.UserName?.dirty
+  ||formModel.controls.UserName?.touched)">
+  UserName is not valid
+  </div>
+  </div>
+  
+      <div class="form-group">
+        <label>Email</label>
+      <input  id="Email" type="text" name="Email" class="form-control rounded border-white mb-3 form-input" placeholder="Balance" formControlName="Email">
+      <div class="text-danger"
+      *ngIf="!formModel.controls.Email?.valid && (formModel.controls.Email?.dirty
+      ||formModel.controls.Email?.touched)">
+      Email-id is not valid
+    </div>
+    </div>
+  
+   
+      <div class="form-group">
+        <label>PhoneNumber</label>
+      <input  id="PhoneNumber" type="text" name="PhoneNumber" class="form-control rounded border-white mb-3 form-input" placeholder="Balance" formControlName="PhoneNumber">
+      <div class="text-danger"
+      *ngIf="!formModel.controls.PhoneNumber?.valid && (formModel.controls.PhoneNumber?.dirty
+      ||formModel.controls.PhoneNumber?.touched)">
+      PhoneNumber is not valid
+    </div>
+    </div>
+  
+      <div class="form-group">
+        <label>dob</label>
+      <input  id="dob" type="text" name="dob" class="form-control rounded border-white mb-3 form-input" placeholder="Balance" formControlName="dob">
+      <div class="text-danger"
+      *ngIf="!formModel.controls.dob?.valid && (formModel.controls.dob?.dirty
+      ||formModel.controls.dob?.touched)">
+      Password is not valid
+    </div>
+    </div>
+  
+    <div class="form-group">
+      <label>panCard</label>
+    <input  id="panCard" type="text" name="panCard" class="form-control rounded border-white mb-3 form-input" placeholder="Balance" formControlName="panCard">
+    <div class="text-danger"
+    *ngIf="!formModel.controls.panCard?.valid && (formModel.controls.panCard?.dirty
+    ||formModel.controls.panCard?.touched)">
+    Pan No is not valid
+  </div>
+  </div>
+  
+      <div class="form-group">
+          <label>Password</label>
+        <input  id="Password" type="Password" name="Password" class="form-control rounded border-white mb-3 form-input" placeholder="Balance" formControlName="Password">
+        <div class="text-danger"
+        *ngIf="!formModel.controls.Password?.valid && (formModel.controls.Password?.dirty
+        ||formModel.controls.Password?.touched)">
+        Password is not valid
+      </div>
+      </div>
+      <div class="text-center pt-2">
+        <button
+          class="btn btn-outline-success"
+         type="submit"
+         [disabled]="!formModel.valid"
+        >
+          Proceed to payment
+        </button>
+      </div>
+    </form>
+  </div> -->

@@ -1,0 +1,109 @@
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-2 sideshow">
+         <ul class="" style="list-style: none;">
+            <div class="thumbnail pb-4 " onclick="ImageUpdate(this)">
+                <!-- onclick="ImageUpdate('{{productData.productImage1}}')" -->
+                <img class="w-50 shadow-lg small-img" src="{{productData.productImage1}}"  alt=""  />
+            </div >
+            <div class="thumbnail pb-4" onclick="ImageUpdate(this)" onclick="ImageUpdate(this)">
+                <img class="w-50 shadow-lg small-img" src="{{productData.productImage2}}"  alt=""   >
+            </div>
+            <div class="thumbnail" onclick="ImageUpdate(this)" onclick="ImageUpdate(this)">
+                <img class="w-50 shadow-lg small-img" src="{{productData.productImage3}}"  alt=""   >
+            </div>
+         </ul>
+        </div>
+        <div class="col-6 main-Product">
+        <img class=" w-75" id="MainImg" src="{{productData.productImage}}" alt="">
+        </div>
+        <ngx-skeleton-loader count="10" appearance="line" [theme]="{ 
+            'border-radius': '5px',
+            height: '150px',
+            width:'250px',
+          
+            border: '1px solid white'
+          }" *ngIf="loader"></ngx-skeleton-loader>
+        <div class="col-4 info">
+            <div class="text-center pt-3">
+                <h5  style="color: rgb(106, 85, 46);">{{productData.productBrand}}</h5>
+            </div>
+            <ul class="pt-5" >
+            <li style="list-style: none;"><strong>Product Details</strong> </li>
+          </ul>
+        <p class="text-center">{{productData.productDetails}}</p>
+        <ul class="pt-2">
+          <li style="list-style: none;"><strong>Product Price</strong> </li>
+        </ul>
+        <p class="text-center"><strong>{{productData.productPrice | currency:'INR'}}</strong></p>
+        <!-- <p class="text-center">MRP₹2,899 (45% OFF)</p> -->
+        <p class="text-center"> Price inclusive of all taxes</p>
+       <div class="text-center">
+
+        <button class="btn  w-75 mb-3 confirmbtn" *ngIf="!productData.addedtocart" (click)="addtocart(productData);updateCartBool(productData)">Add to bag</button>
+        <button class="btn  w-75 mb-3 confirmbtn" *ngIf="productData.addedtocart"><i class="fa-solid fa-circle-check" id="check"></i><strong> Product Added</strong></button>
+        <span  *ngIf="!productData.addedtocart">
+        <button class="btn btn-outline-danger w-75" *ngIf="!productData.addedToWishList" (click)="updateBool(productData)"><i class="fa-regular fa-heart text-danger" ></i> Add to wishlist</button>
+        <button class="btn btn-outline-danger w-75" *ngIf="productData.addedToWishList" (click)="updateBool(productData)" ><i class="fa-solid fa-heart"></i><strong> Added to wishlist</strong></button>
+    </span>
+       </div>
+     
+      <div class="text-center pt-2">
+        <button class="btn btn-outline-secondary w-75" routerLink="/checkout">Checkout</button>
+      </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="suggestion">
+    <div class="text-center">
+        <h2 style="color: rgb(71, 68, 68);padding-top:2em;padding-bottom:1em;font-family:Georgia, 'Times New Roman', Times, serif"><u style=" text-decoration: none;
+            border-bottom: 3px solid rgb(186, 140, 76);">More Products</u></h2>
+
+    </div>
+    <div class="products text-center" >
+        <div class="product" >
+          
+          <mat-card class="shadow rounded " *ngFor="let result of result  | paginate: { itemsPerPage: 9, currentPage: p } ">
+           <span  *ngIf="!result.addedtocart"> <div *ngIf="!result.addedToWishList" class="wishlist">
+            <!--  -->
+              <i class="fa-regular fa-heart" (click)="updateBool(result)" ></i> 
+            </div>
+           <div *ngIf="result.addedToWishList" class="wishlist" >
+            <!-- (click)="updateBool(dt)" -->
+            <i class="fa-solid fa-heart" (click)="updateBool(result)" ></i>
+          </div></span>
+          <a class="text-decoration-none"  routerLink="/productInfo/{{result.productId}}" >
+           <img  src="{{result.productImage}}"class="product-img" />
+          </a>
+            <p><strong>{{result.productBrand}}</strong></p>
+            <p>{{result.productName}}</p>
+            <p class="money"> <strong>{{result.productPrice | currency:'INR'}}</strong></p>
+      
+            
+          <div *ngIf="!result.addedtocart">
+            <!-- (click)="addtocart(dt);updateCartBool(dt)" -->
+           <button class="Add-to-cart  btn btn-outline-secondary" (click)="addtocart(result);updateCartBool(result)" >  Add to cart </button>
+          </div>
+      
+          
+           <div *ngIf="result.addedtocart" >
+            <!-- (click)="removeCartItem(dt);updateCartBool(dt);" -->
+            <button class="Add-to-cart1  btn btn-outline-secondary" (click)="removeCartItem(result);updateCartBool(result);" ><i class="fa-solid fa-circle-check" id="check"></i><strong> Product Added</strong></button>
+          </div>
+          </mat-card>
+        </div>
+        <pagination-controls *ngIf="!loader" (pageChange)="p = $event"></pagination-controls>
+      </div>
+      
+      
+      <ngx-skeleton-loader count="10" appearance="line" [theme]="{ 
+        'border-radius': '5px',
+        height: '350px',
+        width:'250px',
+        'margin-right':'1em',
+        border: '1px solid white'
+      }" *ngIf="loader"></ngx-skeleton-loader>
+      
+</div>

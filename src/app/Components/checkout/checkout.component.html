@@ -1,0 +1,65 @@
+<div class="container bg-white rounded-top mt-5" id="zero-pad" *ngIf="result.length!=0">
+    <div class="row d-flex justify-content-space-around">
+        <div class="col-7 pt-3">
+            <div class="text-center">
+                <div class="pt-1 "><h4>Check Out</h4></div>
+                
+            </div>
+            <div class="d-flex flex-column pt-2 ">
+                <div><h5 class="text-uppercase font-weight-normal">shopping cart</h5></div>
+                <div class="font-weight-normal">{{totalItem}} items</div>
+            </div>
+            <div class="d-flex flex-row  mx-lg-5 mobile " id="heading" style="padding-left: 4.8em;"> 
+                <div class="px-lg-5 mr-lg-5" id="produc">PRODUCTS</div>
+                <div class="px-lg-5 ml-lg-5" id="prc">PRICE</div>
+                <div class="px-lg-5 ml-lg-5" id="quantity">QUANTITY</div>
+                <div class="px-lg-5 ml-lg-3" id="total">TOTAL</div>
+            </div>
+           
+            <div class="d-flex flex-row justify-content-between align-items-center pt-4 pb-3 mobile"  *ngFor="let checkout of result">
+                <div class="d-flex flex-row align-items-center" >
+                    <div style="padding-right:1em" ><img src="{{checkout.productImage}}" width="100" height="100" alt="" id="image" ></div>
+                    <div class="d-flex flex-column pl-md-3 pl-1">
+                        <div><h6>{{checkout.productBrand}}</h6></div>
+                        <div >Product.No:<span class="pl-2">{{checkout.productId}}</span></div>
+                        <div class="close text-danger" style="cursor: pointer;" (click)="removeItem(checkout)"><span class="text-black">|</span> Delete</div>
+                        
+                    </div>                    
+                </div>
+                <div class="pl-md-0 pl-1"><b>{{checkout.productPrice}}</b></div>
+                <div class="pl-md-0 pl-2">
+                    <span class="fa fa-minus-square text-secondary" style="cursor: pointer;" (click)="dec(checkout.productId,checkout.productQuantity)"></span><span class="px-md-3 px-1">{{checkout.productQuantity}}</span><span style="cursor: pointer;" class="fa fa-plus-square text-secondary" (click)="inc(checkout.productId,checkout.productQuantity)"></span>
+                </div>
+                <div class="pl-md-0 pl-1"><b>{{checkout.productQuantity*checkout.productPrice | currency:'INR'}}</b></div>
+                
+            </div>
+            <div class="d-flex justify-content-between align-items-center pt-5">
+                <div>
+                    <button routerLink="/" class="btn btn-sm bg-light border border-dark">GO BACK</button>
+                </div>
+                <div class="px-md-0 px-1" id="footer-font">
+                    <b class="pl-md-4">SUBTOTAL: <span class="pl-md-4"> {{grandTotal | currency:'INR'}}</span></b>
+                </div>
+                <div >
+                    <!-- routerLink="/trackDetails" -->
+                    <button class="btn btn-sm bg-dark text-white px-lg-5 px-3"   (click)="paynow();">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container bg-light rounded-bottom py-4" id="zero-pad">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-7 ">
+          
+        </div>
+    </div>
+</div>
+
+<div class="checkout_empty text-center" *ngIf="result.length == 0"><!--checking condition-->
+    <h2 class="text-black-50">Your shopping cart is empty!</h2>
+   
+    <img class="w-25" src="/assets/Images/Empty-bro.png" alt=""/>
+    
+</div >
+<div class="text-center mb-5"  *ngIf="result.length == 0"> <button routerLink="/" class="btn btn-outline-dark">shop now</button><!--routing to home component--></div>

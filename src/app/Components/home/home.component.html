@@ -1,0 +1,126 @@
+<div class="has-bg-img bg-blend-overlay banner overflow-hidden">
+   
+    
+    <img class="bg-img" src="/assets/Images/banner3.jpg" alt="...">
+    <img class="bg-img" src="/assets/Images/banner9.jpg" alt="...">
+    <button  class="btn btn-outline-secondary " routerLink="/productInfo/12">order now</button>
+  </div>
+  <div class="row overflow-hidden">
+    <div class="col-2 " style="background: linear-gradient(-180deg, rgba(100, 124, 230, 0.5) 0%, rgba(238, 229, 229, 0.5) 100%);">
+      <div class=" pt-5 filter" style="padding-left: 2.3em;font-family:rgb(220, 223, 233),-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; ;">
+      <h6>FILTERS</h6>
+    </div>
+    <hr>
+    <form >
+      <div class="radio pb-2" style="padding-left: 2.3em;">
+        <label><input type="radio" name="optradio"  checked> Men</label>
+      </div>
+      <div class="radio pb-2 "style="padding-left: 2.3em;">
+        <label><input type="radio" name="optradio"> Women</label>
+      </div>
+      <div class="radio pb-2  "style="padding-left: 2.3em;">
+        <label><input type="radio" name="optradio" > Laptops</label>
+      </div>
+      <div class="radio pb-2  "style="padding-left: 2.3em;">
+        <label><input type="radio" name="optradio" > SmartPhones</label>
+      </div>
+      <div class="radio pb-2  "style="padding-left: 2.3em;">
+        <label><input type="radio" name="optradio" > Watches</label>
+      </div><div class="radio pb-2  "style="padding-left: 2.3em;">
+        <label><input type="radio" name="optradio" > Electronics</label>
+      </div>
+    </form>
+    <hr>
+    <div class=" pt-5 filter" style="padding-left: 2.3em;font-family:Whitney,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif; ;">
+      <h6 >PRICE</h6>
+    </div>
+    <hr>
+    <form>
+      <div class="checkbox pb-2 "style="padding-left: 2em;">
+        <label><input type="checkbox" value=""> 100 to 500</label>
+      </div>
+      <div class="checkbox pb-2 "style="padding-left: 2em;">
+        <label><input type="checkbox" value=""> 501 to 10000</label>
+      </div>
+      <div class="checkbox pb-2 "style="padding-left: 2em;">
+        <label><input type="checkbox" value="" > 10001 to 100000</label>
+      </div>
+      <hr>
+    </form>
+    </div>
+    
+    <div class="col-10 overflow-hidden">
+  <!-- <h2 class="text-center pt-4 text-secondary">Categories</h2> -->
+<div class="container pt-5 categories" >
+   
+   
+
+    <!-- when using loop -->
+    <!-- <owl-carousel-o [options]="customOptions">
+    
+        <ng-template carouselSlide *ngFor="let cats of category">
+          <div class="shadow circle mb-3 "><p >{{cats.name}}</p></div>
+        </ng-template>
+      
+      </owl-carousel-o>
+</div> -->
+<ngx-skeleton-loader count="4" appearance="circle"
+[theme]="{ 
+  'border-radius': '50%',
+  
+  height: '150px',
+  width:'150px',
+  'margin-left':'100px',
+  border: '1px solid white'
+}" *ngIf="loader"></ngx-skeleton-loader>
+<h2 class="text-black-50 pt-5 text-center">Products</h2>
+
+
+
+   
+<div class="products text-center" >
+  <div class="product" >
+    
+    <mat-card class="shadow rounded " *ngFor="let result of result | filter:searchkey:'productDetails'|   paginate: { itemsPerPage: 8, currentPage: p } ">
+     <span  *ngIf="!result.addedtocart"> <div *ngIf="!result.addedToWishList" class="wishlist">
+      <!--  -->
+        <i class="fa-regular fa-heart" (click)="updateBool(result)" ></i> 
+      </div>
+     <div *ngIf="result.addedToWishList" class="wishlist" >
+      <!-- (click)="updateBool(dt)" -->
+      <i class="fa-solid fa-heart" (click)="updateBool(result)" ></i>
+    </div></span>
+    <a class="text-decoration-none" routerLink="/productInfo/{{result.productId}}" >
+     <img  src="{{result.productImage}}"class="product-img" />
+    </a>
+      <p><strong>{{result.productBrand}}</strong></p>
+      <p>{{result.productName}}</p>
+      <p class="money"> <strong>{{result.productPrice | currency:'INR'}}</strong></p>
+
+      
+    <div *ngIf="!result.addedtocart">
+      <!-- (click)="addtocart(dt);updateCartBool(dt)" -->
+     <button class="Add-to-cart  btn btn-outline-secondary" (click)="addtocart(result);updateCartBool(result)" >  Add to cart </button>
+    </div>
+
+    
+     <div *ngIf="result.addedtocart" >
+      <!-- (click)="removeCartItem(dt);updateCartBool(dt);" -->
+      <button class="Add-to-cart1  btn btn-outline-secondary" (click)="removeCartItem(result);updateCartBool(result);" ><i class="fa-solid fa-circle-check" id="check"></i><strong> Product Added</strong></button>
+    </div>
+    </mat-card>
+  </div>
+  <pagination-controls *ngIf="!loader" (pageChange)="p = $event"></pagination-controls>
+</div>
+  
+
+<ngx-skeleton-loader count="10" appearance="line" [theme]="{ 
+  'border-radius': '5px',
+  height: '350px',
+  width:'250px',
+  'margin-right':'1em',
+  border: '1px solid white'
+}" *ngIf="loader"></ngx-skeleton-loader>
+</div>
+</div>
+
